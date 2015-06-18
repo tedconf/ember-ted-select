@@ -1,0 +1,60 @@
+<h2 id="title">Ember TED select</h2>
+
+<h3>2-way bound</h3>
+
+{{ted-select
+  content=selectOptions
+  selectClassNames="form-control"
+  optionLabelPath="content.name"
+  optionValuePath="content.val"
+  selectedOption=selectedOption
+}}
+
+<br>
+Selected: {{selectedOption.name}}
+
+<h3>Data-down, actions up</h3>
+
+{{ted-select
+  content=selectOptions
+  selectClassNames="form-control"
+  optionLabelPath="content.name"
+  optionValuePath="content.val"
+  changeSelection="update"
+}}
+
+<br>
+Updated by select: {{updatedBySelect.name}}
+
+
+<h3>Data-down, actions up, reset on select</h3>
+
+{{ted-select
+  content=selectOptions
+  selectClassNames="form-control"
+  optionLabelPath="content.name"
+  optionValuePath="content.val"
+  changeSelection="alsoUpdate"
+  resetOnChange=true
+}}
+
+<br>
+Updated by select: {{alsoUpdatedBySelect.name}}
+{{#if alsoUpdatedBySelect}}
+  <a {{action "clear"}}>Clear</a>
+{{/if}}
+
+
+<h3>selectize type to search</h3>
+<p>depends on <a href="https://github.com/miguelcobain/ember-cli-selectize">ember-cli-selectize</a>!</p>
+
+{{ted-select
+  content=selectOptions
+  selectClassNames="form-control"
+  optionLabelPath="content.name"
+  optionValuePath="content.val"
+  selectedOption=selectedSearchable
+  search=true
+}}
+
+Selected: {{selectedSearchable.name}}
