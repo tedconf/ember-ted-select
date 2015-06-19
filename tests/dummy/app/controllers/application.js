@@ -13,6 +13,12 @@ export default Ember.Controller.extend({
     },
     updateSearchable(){
       console.log('hi');
+    },
+    addNewItem(itemName){
+      this.set('lastAdded', itemName);
+    },
+    updateFilter(text){
+      this.set('filterText', text)
     }
   },
 
@@ -37,5 +43,10 @@ export default Ember.Controller.extend({
     return this.get('selectOptions').get('firstObject');
   }),
 
+  selectedSearchableWithAdd: null,
+
+  lastAdded: null,
+  filterText: null,
+  prepopulateWithThis: 'prepopulated value',
 
 });

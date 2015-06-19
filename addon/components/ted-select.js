@@ -1,5 +1,13 @@
 import Ember from 'ember';
 
+
+/* passed;in:
+*  `changeSelection`
+*  `updateFilter` typing in searchable input
+*  `addItem`  new item added to searchable input
+*/
+
+
 export default Ember.Component.extend({
   content: Ember.A([]),
   selectedOption: null,
@@ -10,24 +18,27 @@ export default Ember.Component.extend({
   changeSelection: null,
   sortBy: null,
   search: false,
+  allowAddItem: false,
   searchPrompt: 'Type to search...',
   selectClassNames: '',
 
   selectizeSelection: null,
   isShowingSearchInput: false,
 
-  selectedOptionLabel: Ember.computed('selectedOption', 'optionLabelPath', function(){
-    var labelProperty = 'selectedOption.' + this.get('optionLabelPath').split('.')[1];
-    return this.get(labelProperty);
+  searchableLabel: Ember.computed('selectedOption', 'prompt', function(){
+    if (this.get('selectedOption')){
+      var labelProperty = 'selectedOption.' + this.get('optionLabelPath').split('.')[1];
+      return this.get(labelProperty);
+    } else {
+      return this.get('prompt');
+    }
   }),
 
   setup: Ember.on('didInsertElement', function(){
     //esc key listener
     this.$().on('keyup', e => {
       if (e.keyCode === 27){
-        this.$('.selectize-input input').blur();
-        this.$('select')[0].selectize.close();
-        this.set('isShowingSearchInput', false);
+        this.send('closeSearchInput');
       }
     });
   }),
@@ -51,9 +62,24 @@ export default Ember.Component.extend({
       this.toggleProperty('isShowingSearchInput');
     },
 
+    closeSearchInput(){
+      this.$('.selectize-input input').blur();
+      this.$('select')[0].selectize.close();
+      this.set('isShowingSearchInput', false);
+    },
+
     updateOptionFromSearch(option){
       this.set('selectedOption', option);
       this.set('selectizeSelection', null);
+      this.set('isShowingSearchInput', false);
+    },
+
+    addItem(item){
+      this.send('closeSearchInput');
+      this.sendAction('addItem', item);
+    },
+    updateFilter(text){
+      this.sendAction('updateFilter', text);
     }
   },
 
@@ -66,9 +92,10 @@ export default Ember.Component.extend({
 
     if (this.get('resetOnChange')){
       this.send('resetSelection');
+    } else if (this.get('search')) {
+      var labelProperty = 'selectedOption.' + this.get('optionLabelPath').split('.')[1];
+      return this.get(labelProperty);
     }
-
-    this.set('isShowingSearchInput', false);
 
   }),
 

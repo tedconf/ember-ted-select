@@ -48,6 +48,8 @@ Updated by select: {{alsoUpdatedBySelect.name}}
 <h3>selectize type to search</h3>
 <p>depends on <a href="https://github.com/miguelcobain/ember-cli-selectize">ember-cli-selectize</a>!</p>
 
+filterText: {{filterText}}
+<br>
 {{ted-select
   content=selectOptions
   selectClassNames="form-control"
@@ -55,6 +57,22 @@ Updated by select: {{alsoUpdatedBySelect.name}}
   optionValuePath="content.val"
   selectedOption=selectedSearchable
   search=true
+  updateFilter="updateFilter"
 }}
 
-Selected: {{selectedSearchable.name}}
+<h3>selectize with new item creation</h3>
+<p>depends on <a href="https://github.com/miguelcobain/ember-cli-selectize">ember-cli-selectize</a>!</p>
+<p>won't work with 2-way binding! you'll need to handle adding the item to model yourself and updating the selectedOption yourself, this just sends out an action with the added text!</p>
+
+{{ted-select
+  content=selectOptions
+  selectClassNames="form-control"
+  optionLabelPath="content.name"
+  optionValuePath="content.val"
+  search=true
+  allowAddItem=true
+  addItem="addNewItem"
+}}
+<br>
+added item: {{lastAdded}}
+

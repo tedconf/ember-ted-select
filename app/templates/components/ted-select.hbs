@@ -1,21 +1,32 @@
 {{#if search}}
   <div class="Ted-select__searchable">
     <label {{action "toggleSearchInput"}} class="Ted-select__searchable-label">
-      {{#if selectedOption}}
-        {{selectedOptionLabel}}
-      {{else}}
-        {{prompt}}
-      {{/if}}
+      {{searchableLabel}}
     </label>
-    {{ember-selectize
-      content=optionsContent
-      optionLabelPath=optionLabelPath
-      optionValuePath=optionValuePath
-      placeholder=searchPrompt
-      select-item="updateOptionFromSearch"
-      selection=selectizeSelection
-      classNames="Ted-select__searchable-selectize"
-    }}
+    {{#if allowAddItem}}
+      {{ember-selectize
+        content=optionsContent
+        optionLabelPath=optionLabelPath
+        optionValuePath=optionValuePath
+        placeholder=searchPrompt
+        select-item="updateOptionFromSearch"
+        update-filter="updateFilter"
+        create-item="addItem"
+        selection=selectizeSelection
+        classNames="Ted-select__searchable-selectize"
+      }}
+    {{else}}
+      {{ember-selectize
+        content=optionsContent
+        optionLabelPath=optionLabelPath
+        optionValuePath=optionValuePath
+        placeholder=searchPrompt
+        select-item="updateOptionFromSearch"
+        update-filter="updateFilter"
+        selection=selectizeSelection
+        classNames="Ted-select__searchable-selectize"
+      }}
+    {{/if}}
   </div>
 {{else}}
   {{view "select"
