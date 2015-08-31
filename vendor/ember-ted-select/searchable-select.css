@@ -9,6 +9,7 @@
   height: 40px;
   padding: 9px 12px;
   padding-right: 50px;
+  margin-bottom: 0;
   border: 1px solid #ccc;
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAXBAMAAADq5DJkAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAYUExURQAAADIyMiYmJjIyMjAwMDMzMzExMczMzG/7/KwAAAAHdFJOUwCoC4YjllkQbp1YAAAARklEQVQY02MoYEAB9OYyGTswMDgbwbgsgiEMLIEicFlDUQdXQbgsg7JgSKCwApzLZCgIlESYrCwIlERwmQyNUOxVUaCjBwG62A+AiSlt5gAAAABJRU5ErkJggg==") right 15px center no-repeat;
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAXBAMAAADq5DJkAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAYUExURQAAADIyMiYmJjIyMjAwMDMzMzExMczMzG/7/KwAAAAHdFJOUwCoC4YjllkQbp1YAAAARklEQVQY02MoYEAB9OYyGTswMDgbwbgsgiEMLIEicFlDUQdXQbgsg7JgSKCwApzLZCgIlESYrCwIlERwmQyNUOxVUaCjBwG62A+AiSlt5gAAAABJRU5ErkJggg==") right 15px center no-repeat, -webkit-linear-gradient(top, #ffffff, #f2f2f2);
