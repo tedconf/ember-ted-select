@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+// import layout from '../templates/components/ted-select';
 
 /* passed;in:
 *  `changeSelection`
@@ -9,14 +9,18 @@ import Ember from 'ember';
 
 
 export default Ember.Component.extend({
+  // layout: layout,
+
   content: Ember.A([]),
-  selectedOption: null,
+  selected: null,
   optionValuePath: 'content.id',
   optionLabelPath: 'content.title',
   prompt: 'Select an option',
-  resetOnChange: false,
-  changeSelection: null,
   sortBy: null,
+  'on-change': Ember.K, //no-op if no action passed in
+
+  resetOnChange: false,
+
   search: false,
   allowAddItem: false,
   searchPrompt: 'Type to search...',
@@ -24,6 +28,8 @@ export default Ember.Component.extend({
 
   selectizeSelection: null,
   isShowingSearchInput: false,
+
+  isNullSelection: Ember.computed.not('selected'),
 
   searchableLabel: Ember.computed('selectedOption', 'prompt', function(){
     if (this.get('selectedOption')){
@@ -43,9 +49,36 @@ export default Ember.Component.extend({
     });
   }),
 
+  sortArray: Ember.computed('sortBy', function(){
+    if (this.get('sortBy')){
+      return [this.get('sortBy')];
+    }
+    return [];
+  }),
+
+  sortedContent: Ember.computed.sort('content', 'sortArray'),
+
+  optionsContent: Ember.computed('content', 'sortedContent', 'sortBy', function(){
+    if (this.get('sortBy')){
+      return this.get('sortedContent');
+    } else {
+      return this.get('content');
+    }
+  }),
+
   actions: {
+    onChange(value){
+      var selected = this.get('content').find(option => {
+        return Ember.get(option, this.get('optionValuePath')).toString() === value;
+      });
+      if (this.get('resetOnChange')){
+        this.send('resetSelection');
+      }
+     this['on-change'].call(this, selected);
+    },
+
     resetSelection(){
-      this.set('selectedOption', null);
+      this.set('selected', null);
     },
 
     toggleSearchInput(){
@@ -81,38 +114,6 @@ export default Ember.Component.extend({
     updateFilter(text){
       this.sendAction('updateFilter', text);
     }
-  },
+  }
 
-  selectionChanged: Ember.observer('selectedOption', function(){
-
-    //send out non-null selections
-    if (this.get('selectedOption')){
-      this.sendAction('changeSelection', this.get('selectedOption'));
-    }
-
-    if (this.get('resetOnChange')){
-      this.send('resetSelection');
-    } else if (this.get('search')) {
-      var labelProperty = 'selectedOption.' + this.get('optionLabelPath').split('.')[1];
-      return this.get(labelProperty);
-    }
-
-  }),
-
-  sortArray: Ember.computed('sortBy', function(){
-    if (this.get('sortBy')){
-      return [this.get('sortBy')];
-    }
-    return [];
-  }),
-
-  sortedContent: Ember.computed.sort('content', 'sortArray'),
-
-  optionsContent: Ember.computed('content', 'sortedContent', 'sortBy', function(){
-    if (this.get('sortBy')){
-      return this.get('sortedContent');
-    } else {
-      return this.get('content');
-    }
-  })
 });

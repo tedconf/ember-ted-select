@@ -1,79 +1,89 @@
-<h2 id="title">Ember TED select</h2>
+<div class="container">
 
-<h3>2-way bound</h3>
+  <h2 id="title">Ember TED select</h2>
 
-{{ted-select
-  content=selectOptions
-  selectClassNames="form-control"
-  optionLabelPath="content.name"
-  optionValuePath="content.val"
-  selectedOption=selectedOption
-}}
+  <h3>Data-down, actions up</h3>
 
-<br>
-Selected: {{selectedOption.name}}
+  {{ted-select
+    content=selectOptions
+    selectClassNames="form-control"
+    optionLabelPath="name"
+    optionValuePath="val"
+    on-change=(action "update")
+  }}
 
-<h3>Data-down, actions up</h3>
+  <br>
+  Updated by select: {{updatedBySelect.name}}
 
-{{ted-select
-  content=selectOptions
-  selectClassNames="form-control"
-  optionLabelPath="content.name"
-  optionValuePath="content.val"
-  changeSelection="update"
-}}
+  <h3>2-way bound</h3>
+  <p>If you would like to two-way bind to a property, pass that property into the `on-change` action using the `mut` helper.</p>
 
-<br>
-Updated by select: {{updatedBySelect.name}}
+  {{ted-select
+    content=selectOptions
+    selectClassNames="form-control"
+    optionLabelPath="name"
+    optionValuePath="val"
+    selected=selectedOption
+    on-change=(action (mut selectedOption))
+  }}
 
-
-<h3>Data-down, actions up, reset on select</h3>
-
-{{ted-select
-  content=selectOptions
-  selectClassNames="form-control"
-  optionLabelPath="content.name"
-  optionValuePath="content.val"
-  changeSelection="alsoUpdate"
-  resetOnChange=true
-}}
-
-<br>
-Updated by select: {{alsoUpdatedBySelect.name}}
-{{#if alsoUpdatedBySelect}}
-  <a {{action "clear"}}>Clear</a>
-{{/if}}
+  <br>
+  Selected: {{selectedOption.name}}
 
 
-<h3>selectize type to search</h3>
-<p>depends on <a href="https://github.com/miguelcobain/ember-cli-selectize">ember-cli-selectize</a>!</p>
+  <hr>
+  <h4 style="color: red;">TODO: get everything below here working</h4>
 
-filterText: {{filterText}}
-<br>
-{{ted-select
-  content=selectOptions
-  selectClassNames="form-control"
-  optionLabelPath="content.name"
-  optionValuePath="content.val"
-  selectedOption=selectedSearchable
-  search=true
-  updateFilter="updateFilter"
-}}
+  <h3>Data-down, actions up, reset on select</h3>
 
-<h3>selectize with new item creation</h3>
-<p>depends on <a href="https://github.com/miguelcobain/ember-cli-selectize">ember-cli-selectize</a>!</p>
-<p>won't work with 2-way binding! you'll need to handle adding the item to model yourself and updating the selectedOption yourself, this just sends out an action with the added text!</p>
+  {{ted-select
+    content=selectOptions
+    selectClassNames="form-control"
+    optionLabelPath="name"
+    optionValuePath="val"
+    selected=alsoUpdatedBySelect
+    on-change=(action "alsoUpdate")
+    resetOnChange=true
+  }}
 
-{{ted-select
-  content=selectOptions
-  selectClassNames="form-control"
-  optionLabelPath="content.name"
-  optionValuePath="content.val"
-  selectedOption=selectedSearchableWithNew
-  search=true
-  allowAddItem=true
-  addItem="addNewItem"
-}}
-<br>
-added item: {{lastAdded}}
+  <br>
+  Updated by select: {{alsoUpdatedBySelect.name}}
+  {{#if alsoUpdatedBySelect}}
+    <a {{action "clear"}}>Clear</a>
+  {{/if}}
+
+
+  <h3>selectize type to search</h3>
+  <p>depends on <a href="https://github.com/miguelcobain/ember-cli-selectize">ember-cli-selectize</a>!</p>
+
+  filterText: {{filterText}}
+  <br>
+  {{ted-select
+    content=selectOptions
+    selectClassNames="form-control"
+    optionLabelPath="content.name"
+    optionValuePath="content.val"
+    selectedOption=selectedSearchable
+    search=true
+    updateFilter="updateFilter"
+  }}
+
+  <h3>selectize with new item creation</h3>
+  <p>depends on <a href="https://github.com/miguelcobain/ember-cli-selectize">ember-cli-selectize</a>!</p>
+  <p>won't work with 2-way binding! you'll need to handle adding the item to model yourself and updating the selectedOption yourself, this just sends out an action with the added text!</p>
+
+  {{ted-select
+    content=selectOptions
+    selectClassNames="form-control"
+    optionLabelPath="content.name"
+    optionValuePath="content.val"
+    selectedOption=selectedSearchableWithNew
+    search=true
+    allowAddItem=true
+    addItem="addNewItem"
+  }}
+  <br>
+  added item: {{lastAdded}}
+
+</div>
 
