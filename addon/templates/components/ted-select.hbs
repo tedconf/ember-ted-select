@@ -1,47 +1,18 @@
-{{#if search}}
-  <div class="Ted-select__searchable">
-    <label {{action "toggleSearchInput"}} class="Ted-select__searchable-label">
-      {{searchableLabel}}
-    </label>
-    {{#if allowAddItem}}
-      {{ember-selectize
-        content=optionsContent
-        optionLabelPath=optionLabelPath
-        optionValuePath=optionValuePath
-        placeholder=searchPrompt
-        select-item="updateOptionFromSearch"
-        update-filter="updateFilter"
-        create-item="addItem"
-        selection=selectizeSelection
-        classNames="Ted-select__searchable-selectize"
-      }}
-    {{else}}
-      {{ember-selectize
-        content=optionsContent
-        optionLabelPath=optionLabelPath
-        optionValuePath=optionValuePath
-        placeholder=searchPrompt
-        select-item="updateOptionFromSearch"
-        update-filter="updateFilter"
-        selection=selectizeSelection
-        classNames="Ted-select__searchable-selectize"
-      }}
-    {{/if}}
-  </div>
-{{else}}
-  <select
-    onchange={{action "onChange" value="target.value"}}
-    class={{selectClassNames}}>
+<select
+  onchange={{action "onChange" value="target"}}
+  class={{selectClassNames}}
+  multiple={{multiple}}>
+  <option
+    value=""
+    selected={{ted-select-is-equal null selected}}>
+    {{prompt}}
+  </option>
+  {{#each sortedContent key="@index" as |option|}}
     <option
-      selected={{isNullSelection}}>
-      {{prompt}}
+      value="{{ted-select-get option optionValueKey}}"
+      selected={{ted-select-is-equal option selected}}
+      disabled={{ted-select-get option optionDisabledKey}}>
+      {{ted-select-get option optionLabelKey}}
     </option>
-    {{#each content key="@index" as |option|}}
-      <option
-        value="{{ted-select-get option optionValuePath}}"
-        selected={{ted-select-is-equal option selected}}>
-        {{ted-select-get option optionLabelPath}}
-      </option>
-    {{/each}}
-  </select>
-{{/if}}
+  {{/each}}
+</select>

@@ -1,6 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  updatedBySelect: null,
+  selectedOptions: null,
+
+  selectedOption: Ember.computed('TEDevents', function(){
+     return this.get('TEDevents').findBy('val', 4);
+  }),
+
+  initialSelection: Ember.computed('TEDevents', function() {
+    return this.get('TEDevents').findBy('val', 3);
+  }),
+
   actions: {
     update(newOption){
       this.set('updatedBySelect', newOption);
@@ -11,53 +22,42 @@ export default Ember.Controller.extend({
     clear(){
       this.set('alsoUpdatedBySelect', null);
     },
-    updateSearchable(){
-      console.log('hi');
-    },
-    addNewItem(itemName){
-      this.set('lastAdded', itemName);
-
-      var newOption = {
-        val: 3,
-        name: itemName
-      };
-
-      this.get('selectOptions').addObject(newOption);
-
-      this.set('selectedSearchableWithNew', newOption);
-    },
-
-    updateFilter(text){
-      this.set('filterText', text);
+    updateMultiple(selectedOptions){
+      this.set('selectedOptions', selectedOptions);
     }
   },
 
-  selectOptions: Ember.A([
+  TEDevents: Ember.A([
     {
-      val: 1,
-      name: 'first option'
+     val: 1,
+     name: 'TED 2015',
     },
     {
       val: 2,
-      name: 'second option'
+      name: 'TEDxNASA',
+      isTEDxEvent: true
+    },
+    {
+     val: 3,
+     name: 'TED 2014',
+    },
+    {
+      val: 4,
+      name: 'TEDGlobal 2014'
+    },
+    {
+      val: 5,
+      name: 'TEDxNewYork',
+      isTEDxEvent: true
+    },
+    {
+      val: 6,
+      name: 'TEDGlobal 2013'
+    },
+    {
+      val: 7,
+      name: 'TED 2013'
     }
   ]),
-  selectedOption: Ember.computed('selectOptions', function(){
-    return this.get('selectOptions').get('firstObject');
-  }),
-
-  updatedBySelect: null,
-  alsoUpdatedBySelect: null,
-
-  selectedSearchable: Ember.computed('selectOptions', function(){
-    return this.get('selectOptions').get('firstObject');
-  }),
-
-  selectedSearchableWithNew: Ember.computed('selectOptions', function(){
-    return this.get('selectOptions').get('firstObject');
-  }),
-
-  lastAdded: null,
-  filterText: null,
 
 });
