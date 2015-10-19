@@ -15,6 +15,7 @@ export default Ember.Component.extend({
   prompt: 'Select an option',
   sortBy: null,
   multiple: false,
+  resetOnChange: false,
   'on-change': Ember.K, //no-op if no action passed in
 
   sortArray: Ember.computed('sortBy', function(){

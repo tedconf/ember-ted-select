@@ -3,12 +3,12 @@
   class={{selectClassNames}}
   multiple={{multiple}}>
   {{#if prompt}}
-    <option
-      value=""
-      selected={{ted-select-is-equal null selected}}
-      class="Ted-select__prompt">
-      {{prompt}}
-    </option>
+  <option
+    value=""
+    selected={{ted-select-is-equal null selected}}
+    class="Ted-select__prompt">
+    {{prompt}}
+  </option>
   {{/if}}
   {{#each sortedContent key="@index" as |option|}}
     <option
