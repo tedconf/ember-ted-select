@@ -5,96 +5,161 @@ https://github.com/ef4/ember-code-snippet --}}
 
   <h1 id="title">Ember TED select</h1>
 
+  <div class="row">
+    <div class="col-md-7">
+      <h4>A data-down actions up select component rendered with real DOM elements. Supports disabled options, multi-select, option sorting and custom prompt.</h4>
+    </div>
+  </div>
+
   <h2>Examples</h2>
 
   <h3>Data-down, actions up</h3>
 
-  {{ted-select
-    content=TEDevents
-    selectClassNames="form-control"
-    optionLabelKey="name"
-    optionValueKey="val"
-    on-change=(action "update")
-    selected=initialSelection
-  }}
+  <div class="row">
+    <div class="col-md-6">
+      {{code-snippet name="ddau.hbs"}}
+    </div>
 
-  <br>
-  Initial selection: {{initialSelection.name}}
-  <br>
-  Updated by select: {{updatedBySelect.name}}
+    <div class="col-md-6">
+      {{!-- BEGIN-SNIPPET ddau --}}
+      {{ted-select
+        content=TEDevents
+        selectClassNames="form-control"
+        optionLabelKey="name"
+        optionValueKey="val"
+        on-change=(action "update")
+        selected=initialSelection
+      }}
+      {{!-- END-SNIPPET --}}
+      <br>
+      Initial selection: {{initialSelection.name}}
+      <br>
+      Updated by select: {{updatedBySelect.name}}
+    </div>
+  </div>
 
-  <h3>two-way bound</h3>
+
+  <h3>Two-way bound</h3>
   <p>If you would like to two-way bind to a property, pass that property into the `on-change` action using the `mut` helper.</p>
 
-  {{ted-select
-    content=TEDevents
-    selectClassNames="form-control"
-    optionLabelKey="name"
-    optionValueKey="val"
-    selected=selectedOption
-    on-change=(action (mut selectedOption))
-  }}
+  <div class="row">
+    <div class="col-md-6">
+      {{code-snippet name="two-way.hbs"}}
+    </div>
 
-  <br>
-  Selected: {{selectedOption.name}}
+    <div class="col-md-6">
+      {{!-- BEGIN-SNIPPET two-way --}}
+      {{ted-select
+        content=TEDevents
+        selectClassNames="form-control"
+        optionLabelKey="name"
+        optionValueKey="val"
+        selected=selectedOption
+        on-change=(action (mut selectedOption))
+      }}
+      {{!-- END-SNIPPET --}}
+      <br>
+      Selected: {{selectedOption.name}}
+    </div>
+  </div>
+
 
   <h3>Sorting the options list</h3>
   <p>To sort the options content, pass in the property of the options array with the `sortBy` property.</p>
 
-  {{ted-select
-    content=TEDevents
-    selectClassNames="form-control"
-    optionLabelKey="name"
-    optionValueKey="val"
-    sortBy="name"
-  }}
+  <div class="row">
+    <div class="col-md-6">
+      {{code-snippet name="sorted.hbs"}}
+    </div>
+
+    <div class="col-md-6">
+      {{!-- BEGIN-SNIPPET sorted --}}
+      {{ted-select
+        content=TEDevents
+        selectClassNames="form-control"
+        optionLabelKey="name"
+        optionValueKey="val"
+        sortBy="name"
+      }}
+      {{!-- END-SNIPPET --}}
+    </div>
+  </div>
 
   <h3>Disabling options</h3>
   <p>You can allow some options to be disabled by passing in a boolean object property to use as the disabled flag.</p>
-  <p>eg. <code>optionDisabledKey="isTEDxEvent"</code></p>
 
-  {{ted-select
-    content=TEDevents
-    selectClassNames="form-control"
-    optionLabelKey="name"
-    optionValueKey="val"
-    optionDisabledKey="isTEDxEvent"
-  }}
+  <div class="row">
+    <div class="col-md-6">
+      {{code-snippet name="disabled.hbs"}}
+    </div>
+
+    <div class="col-md-6">
+      {{!-- BEGIN-SNIPPET disabled --}}
+      {{ted-select
+        content=TEDevents
+        selectClassNames="form-control"
+        optionLabelKey="name"
+        optionValueKey="val"
+        optionDisabledKey="isTEDxEvent"
+      }}
+      {{!-- END-SNIPPET --}}
+    </div>
+  </div>
 
   <h3>Data-down, actions up, reset on select</h3>
 
-  {{ted-select
-    content=TEDevents
-    selectClassNames="form-control"
-    optionLabelKey="name"
-    optionValueKey="val"
-    on-change=(action "alsoUpdate")
-    resetOnChange=true
-  }}
+  <div class="row">
+    <div class="col-md-6">
+      {{code-snippet name="disabled.hbs"}}
+    </div>
 
-  <br>
-  Updated by select: {{alsoUpdatedBySelect.name}}
-  {{#if alsoUpdatedBySelect}}
-    <a {{action "clear"}}>Clear</a>
-  {{/if}}
+    <div class="col-md-6">
+      {{!-- BEGIN-SNIPPET disabled --}}
+      {{ted-select
+        content=TEDevents
+        selectClassNames="form-control"
+        optionLabelKey="name"
+        optionValueKey="val"
+        on-change=(action "alsoUpdate")
+        resetOnChange=true
+      }}
+      {{!-- END-SNIPPET --}}
+
+      <br>
+      Updated by select: {{alsoUpdatedBySelect.name}}
+      {{#if alsoUpdatedBySelect}}
+        <a {{action "clear"}}>Clear</a>
+      {{/if}}
+    </div>
+  </div>
 
   <h3>Multi-select</h3>
 
-  {{ted-select
-    content=TEDevents
-    selectClassNames="form-control"
-    optionLabelKey="name"
-    optionValueKey="val"
-    multiple=true
-    on-change=(action "updateMultiple")
-  }}
-  <br>
-  <p>selected option(s): </p>
-  <ul>
-    {{#each selectedOptions as |option|}}
-      <li>{{option.name}}</li>
-    {{/each}}
-  </ul>
+  <div class="row">
+    <div class="col-md-6">
+      {{code-snippet name="disabled.hbs"}}
+    </div>
+
+    <div class="col-md-6">
+      {{!-- BEGIN-SNIPPET disabled --}}
+      {{ted-select
+        content=TEDevents
+        selectClassNames="form-control"
+        optionLabelKey="name"
+        optionValueKey="val"
+        multiple=true
+        on-change=(action "updateMultiple")
+      }}
+      {{!-- END-SNIPPET --}}
+      <br>
+      <p>selected option(s): </p>
+      <ul>
+        {{#each selectedOptions as |option|}}
+          <li>{{option.name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 
 
   <h2>Configurable properties</h2>
