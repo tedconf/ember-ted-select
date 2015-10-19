@@ -1,3 +1,1 @@
-import tedSelectGet from 'ember-ted-select/helpers/ted-select-get';
-
-export default tedSelectGet;
+export { default, tedSelectGet } from 'ember-ted-select/helpers/ted-select-get';

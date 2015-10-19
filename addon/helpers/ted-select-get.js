@@ -9,4 +9,4 @@ export function tedSelectGet([object, path]) {
 
 }
 
-export default Ember.HTMLBars.makeBoundHelper(tedSelectGet);
+export default Ember.Helper.helper(tedSelectGet);

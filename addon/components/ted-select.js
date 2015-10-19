@@ -5,6 +5,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   // layout: layout,
 
+  classNames: 'Ted-select',
   selectClassNames: null,
   content: Ember.A([]),
   optionValueKey: 'id',
@@ -28,21 +29,21 @@ export default Ember.Component.extend({
   actions: {
     onChange(target){
       let value = $(target).val(),
-          selected;
+          selection;
 
       //if multiple, .val() returns an array. if not, it's a single value
       if (this.get('multiple')){
-        selected = this.get('content').filter(option => {
+        selection = this.get('content').filter(option => {
           let optionVal = Ember.get(option, this.get('optionValueKey')).toString();
           return Ember.A(value).contains(optionVal);
         });
       } else {
-        selected = this.get('content').find(option => {
+        selection = this.get('content').find(option => {
           return Ember.get(option, this.get('optionValueKey')).toString() === value;
         });
       }
 
-      this['on-change'].call(this, selected);
+      this['on-change'].call(this, selection);
 
       if (this.get('resetOnChange')){
         this.send('resetSelection');
