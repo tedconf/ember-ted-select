@@ -34,9 +34,10 @@ export default Ember.Component.extend({
 
       //if multiple, .val() returns an array. if not, it's a single value
       if (this.get('multiple')){
+        let values = Ember.A(value);
         selection = this.get('content').filter(option => {
           let optionVal = Ember.get(option, this.get('optionValueKey')).toString();
-          return Ember.A(value).contains(optionVal);
+          return values.contains(optionVal);
         });
       } else {
         selection = this.get('content').find(option => {
