@@ -1,0 +1,21 @@
+<select
+  onchange={{action "onChange" value="target"}}
+  class={{selectClassNames}}
+  multiple={{multiple}}>
+  {{#if prompt}}
+  <option
+    value=""
+    selected={{ted-select-is-equal null selected}}
+    class="Ted-select__prompt">
+    {{prompt}}
+  </option>
+  {{/if}}
+  {{#each sortedContent key="@index" as |option|}}
+    <option
+      value="{{ted-select-get option optionValueKey}}"
+      selected={{ted-select-is-equal option selected}}
+      disabled={{ted-select-get option optionDisabledKey}}>
+      {{ted-select-get option optionLabelKey}}
+    </option>
+  {{/each}}
+</select>

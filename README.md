@@ -1,96 +1,121 @@
 # Ember-ted-select [WIP]
 
-One select component to rule them all.  Supports data-down, actions-up and type to search (with [ember-cli-selectize](https://github.com/miguelcobain/ember-cli-selectize)).
+A data-down actions up select component rendered with real DOM elements.Supports disabled options, multi-select, option sorting and custom prompt.
 
-Still in development, USE WITH CAUTION!
+## Installation
 
-## Usage
+* `npm install git+ssh://git@github.com/tedconf/ember-ted-select.git`
 
-Shares most options with the default Ember select view.
-
-### 2-way bound
-
-````
-{{ted-select
-  content=selectOptions
-  selectClassNames="form-control"
-  optionLabelPath="content.name"
-  optionValuePath="content.val"
-  selectedOption=boundValue
-}}
-````
+## Examples
 
 ### Data-down, actions up
 
 ````
 {{ted-select
-  content=selectOptions
+  content=TEDevents
   selectClassNames="form-control"
-  optionLabelPath="content.name"
-  optionValuePath="content.val"
-  changeSelection="yourChangeAction"
-  resetOnChange=true
+  optionLabelKey="name"
+  optionValueKey="val"
+  on-change=(action "update")
+  selected=initialSelection
 }}
 ````
 
-### type to search with selectize 
+###Two-way-bound
 
-depends on <a href="https://github.com/miguelcobain/ember-cli-selectize">ember-cli-selectize</a>!
+If you would like to two-way bind to a property, pass that property into the `on-change` action using the `mut` helper.
 
 ````
 {{ted-select
-  content=selectOptions
+  content=TEDevents
   selectClassNames="form-control"
-  optionLabelPath="content.name"
-  optionValuePath="content.val"
-  selectedOption=boundValue
-  updateFilter="doSomethingWhenIType"
-  search=true
+  optionLabelKey="name"
+  optionValueKey="val"
+  selected=selectedOption
+  on-change=(action (mut selectedOption))
 }}
 ````
 
+##Configurable options
 
-<h3>selectize with new item creation</h3>
-<p>depends on <a href="https://github.com/miguelcobain/ember-cli-selectize">ember-cli-selectize</a>!</p>
-<p>won't work with 2-way binding! you'll need to handle adding the item to model yourself and updating the selectedOption yourself, this just sends out an action with the added text!</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Purpose</th>
+      <th>Expected Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>optionLabelKey</code></td>
+      <td>[optional] Specify a property of the content object to use as each option's <code>value</code> attribute.</td>
+      <td>string</td>
+      <td><code>'id'</code></td>
+    </tr>
+    <tr>
+      <td><code>optionValueKey</code></td>
+      <td>[optional] Specify a property of the content object to use as each option's label.</td>
+      <td>string</td>
+      <td><code>'title'</code></td>
+    </tr>
+    <tr>
+      <td><code>optionDisabledKey</code></td>
+      <td>[optional] Specify a boolean property of the content object to use as a flag for the <code>disabled</code>attribute.</td>
+      <td>string, null</td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>multiple</code></td>
+      <td>
+        [optional] When <code>true</code>, adds the <code>multiple</code> attribute to the rendered <code>&lt;select&lt;</code>element.<br>
+        When active, the <code>on-change</code> action will pass an array of objects rather than a single selected object.
+      </td>
+      <td>boolean</td>
+      <td><code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>selectClassNames</code></td>
+      <td>Adds one or more custom class names to the select element. Pass multiple classes as a space separated list: <code>form-control My-select</code></td>
+      <td>string, null</td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+      <td><code>prompt</code></td>
+      <td>[optional] String or <code>null</code>. Sets the prompt text or hides the prompt option when set to <code>null</code>.</td>
+      <td>string, null</td>
+      <td><code>'Select an item'</code></td>
+    </tr>
+    <tr>
+      <td><code>on-change</code></td>
+      <td>
+        Specify your own named action to trigger when the select value changes. Standard usage is: <code>(action "update")</code>. Your action handler will receive the new value, as a single value for a standard select or as an array if <code>multiple</code> is active.<br>
+        You can also force a two-way binding by using the [`mut` helper](http://emberjs.com/api/classes/Ember.Templates.helpers.html#method_mut). See <strong>two-way-bound</strong> for an example.
+      </td>
+      <td>Ember action</td>
+      <td><code>Ember.K</code> (noop)</td>
+    </tr>
+    <tr>
+      <td><code>resetOnChange</code></td>
+      <td>
+        [optional] When <code>true</code>, clears the select element's value after a selection is made. Intended to be used with data-down, actions up only. Use with two-way binding at your own risk!
+      </td>
+      <td>boolean</td>
+      <td>
+        <code>false</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-````
-{{ted-select
-  content=selectOptions
-  selectClassNames="form-control"
-  optionLabelPath="content.name"
-  optionValuePath="content.val"
-  selectedOption=mySelectedOption
-  search=true
-  allowAddItem=true
-  addItem="addNewItem"
-}}
-````
-
-````
-//in your controller.js or component.js where {{ted-select}} is being used
-actions: {
-  addNewItem(itemName){
-    var newOption = {
-      val: 3,
-      name: itemName
-    };
-
-    this.get('selectOptions').addObject(newOption);
-
-    this.set('mySelectedOption', newOption);
-  },
-}
-````
-
-## Installation
+## Running a demo
 
 * `git clone` this repository
 * `npm install`
 * `bower install`
-
-## Running a demo
-
 * `ember server`
 * Visit your app at http://localhost:4200.
 
