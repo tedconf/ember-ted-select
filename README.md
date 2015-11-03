@@ -4,7 +4,7 @@ A data-down actions up select component rendered with real DOM elements.Supports
 
 ## Installation
 
-* `npm instal --save-dev git+ssh://git@github.com/tedconf/ember-ted-select.git`
+* `npm install --save-dev git+ssh://git@github.com/tedconf/ember-ted-select.git`
 
 ## Examples
 
