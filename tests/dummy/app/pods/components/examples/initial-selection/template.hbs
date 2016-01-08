@@ -1,0 +1,23 @@
+  <h3>Pass in an initial selection</h3>
+
+  <p>You can set the value of the select using the `selected` property, especially useful for pre-populating the select with a default or initial value. Notice that selecting a new option won't mutate the outside variable</p>
+
+  <div class="row">
+    <div class="col-md-6">
+      {{code-snippet name="ddau.hbs"}}
+    </div>
+
+    <div class="col-md-6">
+      {{!-- BEGIN-SNIPPET ddau --}}
+      {{ted-select
+        selectClassNames="form-control"
+        content=TEDevents
+        selected=initialSelection
+        on-change=(action "update")
+      }}
+      {{!-- END-SNIPPET --}}
+      Initial selection: {{initialSelection.title}}
+      <br>
+      Updated by select: {{updatedBySelect.title}}
+    </div>
+  </div>

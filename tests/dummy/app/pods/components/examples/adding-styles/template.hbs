@@ -1,0 +1,25 @@
+{{#ember-markdown-section}}
+  ### Styling & customization
+
+ `ember-ted-select` will use only browser-default styles. Customization is completely up to you.
+
+  For convenience, the class name on the select element itself can be changed using the `selectClassNames` option. This is helpful for applying framework styles, like [Bootstrap's `.form-control` class](http://getbootstrap.com/css/#forms), shown here and in the following examples.
+
+  You can customize the prompt text with `prompt="your custom string"` or remove it completely with `prompt=null`.
+{{/ember-markdown-section}}
+
+<div class="row">
+  <div class="col-md-6">
+    {{code-snippet name="styled.hbs"}}
+  </div>
+
+  <div class="col-md-6">
+    {{!-- BEGIN-SNIPPET styled --}}
+     {{ted-select
+      selectClassNames="form-control"
+      prompt="Choose an event"
+      content=TEDevents }}
+    {{!-- END-SNIPPET --}}
+    Selected: {{selected.title}}
+  </div>
+</div>

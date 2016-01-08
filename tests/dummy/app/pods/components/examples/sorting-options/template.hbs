@@ -1,0 +1,18 @@
+<h3>Sorting the options list</h3>
+<p>To sort the options content, pass in the property of the options array with the `sortBy` property.</p>
+
+<div class="row">
+  <div class="col-md-6">
+    {{code-snippet name="sorted.hbs"}}
+  </div>
+
+  <div class="col-md-6">
+    {{!-- BEGIN-SNIPPET sorted --}}
+    {{ted-select
+      selectClassNames="form-control"
+      content=TEDevents
+      sortBy="title"
+    }}
+    {{!-- END-SNIPPET --}}
+  </div>
+</div>

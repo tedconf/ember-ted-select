@@ -1,0 +1,108 @@
+{{ted-page-header
+  subheading='Ember'
+  slim-heading='TED'
+  strong-heading='Select'
+  byline='A data-down, actions up select component built with real DOM elements'
+  github='http://github.com/tedconf/ember-ted-select'}}
+
+<div class="container">
+
+  {{#ember-markdown-section}}
+  ## Installation
+
+  ```
+  ember install ember-ted-select
+  ```
+
+  ## Features
+  `ember-ted-select` is a simple select element component that can do everything a native select element can do and more:
+
+  * disabled options
+  * multi-select
+  * custom prompt
+  * option sorting
+
+  It uses the data-down, actions up pattern to avoid problematic two-way data binding, and can be used as a replacement for the [deprecated `&lbrace;{view 'select'}&rbrace;` helper](http://emberjs.com/deprecations/v1.x/#toc_ember-select).
+
+
+  ## Examples
+
+
+  {{/ember-markdown-section}}
+
+  {{examples/basic-usage TEDevents=TEDevents}}
+  {{examples/adding-styles TEDevents=TEDevents}}
+  {{examples/initial-selection TEDevents=TEDevents}}
+  {{examples/sorting-options TEDevents=TEDevents}}
+  {{examples/disabling-options TEDevents=TEDevents}}
+  {{examples/multi-select TEDevents=TEDevents}}
+  {{examples/two-way-bound TEDevents=TEDevents}}
+
+  <h2>Configurable properties</h2>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Purpose</th>
+        <th>Expected Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>optionLabelKey</code></td>
+        <td>[optional] Specify a property of the content object to use as each option's <code>value</code> attribute.</td>
+        <td>string</td>
+        <td><code>'id'</code></td>
+      </tr>
+      <tr>
+        <td><code>optionValueKey</code></td>
+        <td>[optional] Specify a property of the content object to use as each option's label.</td>
+        <td>string</td>
+        <td><code>'title'</code></td>
+      </tr>
+      <tr>
+        <td><code>optionDisabledKey</code></td>
+        <td>[optional] Specify a boolean property of the content object to use as a flag for the <code>disabled</code>attribute.</td>
+        <td>string, null</td>
+        <td><code>null</code></td>
+      </tr>
+      <tr>
+        <td><code>multiple</code></td>
+        <td>
+          [optional] When <code>true</code>, adds the <code>multiple</code> attribute to the rendered <code>&lt;select&lt;</code>element.<br>
+          When active, the <code>on-change</code> action will pass an array of objects rather than a single selected object.
+        </td>
+        <td>boolean</td>
+        <td><code>false</code></td>
+      </tr>
+      <tr>
+        <td><code>selectClassNames</code></td>
+        <td>Adds one or more custom class names to the select element. Pass multiple classes as a space separated list: <code>form-control My-select</code></td>
+        <td>string, null</td>
+        <td><code>null</code></td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td><code>prompt</code></td>
+        <td>[optional] String or <code>null</code>. Sets the prompt text or hides the prompt option when set to <code>null</code>.</td>
+        <td>string, null</td>
+        <td><code>'Select an item'</code></td>
+      </tr>
+      <tr>
+        <td><code>on-change</code></td>
+        <td>
+          Specify your own named action to trigger when the select value changes. Standard usage is: <code>(action "update")</code>. Your action handler will receive the new value, as a single value for a standard select or as an array if <code>multiple</code> is active.<br>
+          You can also force a two-way binding by using the [`mut` helper](http://emberjs.com/api/classes/Ember.Templates.helpers.html#method_mut). See <strong>two-way-bound</strong> for an example.
+        </td>
+        <td>Ember action</td>
+        <td><code>Ember.K</code> (noop)</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
