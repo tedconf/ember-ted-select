@@ -1,7 +1,7 @@
 {
   "name": "ember-ted-select",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Data down, actions up, Ember select component built with real DOM",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -12,10 +12,14 @@
     "test": "ember try:testall"
   },
   "repository": "https://github.com/tedconf/ember-ted-select",
+  "bugs": {
+    "url": "https://github.com/tedconf/ember-ted-select/issues"
+  },
+  "homepage": "http://tedconf.github.io/ember-ted-select/",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "TEDconf and contributors",
   "license": "MIT",
   "devDependencies": {
     "bootstrap-sass": "3.3.6",
@@ -45,7 +49,8 @@
   },
   "keywords": [
     "ember-addon",
-    "select"
+    "select",
+    "ddau"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5",
