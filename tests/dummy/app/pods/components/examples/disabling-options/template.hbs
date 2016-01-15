@@ -1,0 +1,18 @@
+<h3>Disabled options</h3>
+<p>You can allow some options to be disabled by passing in a boolean object property to use as the disabled flag.</p>
+
+<div class="row">
+  <div class="col-md-6">
+    {{code-snippet name="disabled.hbs"}}
+  </div>
+
+  <div class="col-md-6">
+    {{!-- BEGIN-SNIPPET disabled --}}
+    {{ted-select
+      content=TEDevents
+      selectClassNames="form-control"
+      optionDisabledKey="isTEDxEvent"
+    }}
+    {{!-- END-SNIPPET --}}
+  </div>
+</div>

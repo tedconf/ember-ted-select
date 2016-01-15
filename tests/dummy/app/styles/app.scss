@@ -1,0 +1,21 @@
+@import 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'ember-ted-docs/styles';
+
+ h2 {
+  margin-top: 50px;
+ }
+
+.Ted-select {
+  margin-bottom: 20px;
+}
+
+.Example {
+  border-bottom: solid 1px #dedede;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+}
+
+code {
+  background: #f3f3f3;
+  color: inherit;
+}

@@ -1,0 +1,26 @@
+<h3>Multi-select</h3>
+<p>All options available with single selection are also available with mutli-select, but the value of the select is now an array of options instead of a single value.</p>
+
+<div class="row">
+  <div class="col-md-6">
+    {{code-snippet name="multi.hbs"}}
+  </div>
+
+  <div class="col-md-6">
+{{!-- BEGIN-SNIPPET multi --}}
+{{ted-select
+  selectClassNames="form-control"
+  content=TEDevents
+  multiple=true
+  on-change=(action "updateMultiple")
+}}
+
+<p>selected option(s): </p>
+<ul>
+  {{#each selectedOptions as |option|}}
+    <li>{{option.title}}</li>
+  {{/each}}
+</ul>
+{{!-- END-SNIPPET --}}
+  </div>
+</div>
