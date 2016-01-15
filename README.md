@@ -1,40 +1,32 @@
-# Ember-ted-select [WIP]
+# Ember-ted-select
 
-A data-down actions up select component rendered with real DOM elements.Supports disabled options, multi-select, option sorting and custom prompt.
+A data down, actions up select component rendered with real DOM elements.Supports disabled options, multi-select, option sorting and custom prompt.
 
 ## Installation
 
-* `npm install --save-dev git+ssh://git@github.com/tedconf/ember-ted-select.git`
+* `ember install ember-ted-select`
 
 ## Examples
 
-### Data-down, actions up
+### Standard Usage
+
+You'll need to give `ted-select` an array of options (`content`), specifying a property to use for both option value and option label. A selection can be passed in (data down) using the `selected` property, and the add-on will send an `on-change` action out (actions-up)
 
 ````
 {{ted-select
-  content=TEDevents
   selectClassNames="form-control"
-  optionLabelKey="name"
-  optionValueKey="val"
+  content=TEDevents
+  optionValueKey="id"
+  optionLabelKey="title"
   on-change=(action "update")
   selected=initialSelection
 }}
 ````
 
-###Two-way-bound
+### Demo and additional examples
 
-If you would like to two-way bind to a property, pass that property into the `on-change` action using the `mut` helper.
+Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and more detailed usage examples.
 
-````
-{{ted-select
-  content=TEDevents
-  selectClassNames="form-control"
-  optionLabelKey="name"
-  optionValueKey="val"
-  selected=selectedOption
-  on-change=(action (mut selectedOption))
-}}
-````
 
 ##Configurable options
 
@@ -48,6 +40,12 @@ If you would like to two-way bind to a property, pass that property into the `on
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td><code>content</code></td>
+      <td>Pass in a content array to populate the select options.</td>
+      <td>array</td>
+      <td><code>null</code></td>
+    </tr>
     <tr>
       <td><code>optionLabelKey</code></td>
       <td>[optional] Specify a property of the content object to use as each option's <code>value</code> attribute.</td>
@@ -63,6 +61,29 @@ If you would like to two-way bind to a property, pass that property into the `on
     <tr>
       <td><code>optionDisabledKey</code></td>
       <td>[optional] Specify a boolean property of the content object to use as a flag for the <code>disabled</code>attribute.</td>
+      <td>string, null</td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>on-change</code></td>
+      <td>
+        Specify your own named action to trigger when the select value changes. Standard usage is: <code>(action "update")</code>. Your action handler will receive the new value, as a single value for a standard select or as an array if <code>multiple</code> is active.<br>
+        You can also force a two-way binding by using the [`mut` helper](http://emberjs.com/api/classes/Ember.Templates.helpers.html#method_mut). See <strong>two-way-bound</strong> for an example.
+      </td>
+      <td>Ember action</td>
+      <td><code>Ember.K</code> (noop)</td>
+    </tr>
+    <tr>
+      <td><code>selected</code></td>
+      <td>
+        Pass in an initial selection or update the selected value from outside the component. Must match one of the options in the content array for single select, or be an array of objects for multi-select.
+      </td>
+      <td>Object, Array</td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>sortBy</code></td>
+      <td>[optional] Specify a property of the content array to use for sorting the options. When set to null, options will remain in the order of the original array.</td>
       <td>string, null</td>
       <td><code>null</code></td>
     </tr>
@@ -89,27 +110,9 @@ If you would like to two-way bind to a property, pass that property into the `on
       <td>string, null</td>
       <td><code>'Select an item'</code></td>
     </tr>
-    <tr>
-      <td><code>on-change</code></td>
-      <td>
-        Specify your own named action to trigger when the select value changes. Standard usage is: <code>(action "update")</code>. Your action handler will receive the new value, as a single value for a standard select or as an array if <code>multiple</code> is active.<br>
-        You can also force a two-way binding by using the [`mut` helper](http://emberjs.com/api/classes/Ember.Templates.helpers.html#method_mut). See <strong>two-way-bound</strong> for an example.
-      </td>
-      <td>Ember action</td>
-      <td><code>Ember.K</code> (noop)</td>
-    </tr>
-    <tr>
-      <td><code>resetOnChange</code></td>
-      <td>
-        [optional] When <code>true</code>, clears the select element's value after a selection is made. Intended to be used with data-down, actions up only. Use with two-way binding at your own risk!
-      </td>
-      <td>boolean</td>
-      <td>
-        <code>false</code>
-      </td>
-    </tr>
   </tbody>
 </table>
+
 
 ## Running a demo
 
