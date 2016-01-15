@@ -51,6 +51,12 @@
     </thead>
     <tbody>
       <tr>
+        <td><code>content</code></td>
+        <td>Pass in a content array to populate the select options.</td>
+        <td>array</td>
+        <td><code>null</code></td>
+      </tr>
+      <tr>
         <td><code>optionLabelKey</code></td>
         <td>[optional] Specify a property of the content object to use as each option's <code>value</code> attribute.</td>
         <td>string</td>
@@ -65,6 +71,29 @@
       <tr>
         <td><code>optionDisabledKey</code></td>
         <td>[optional] Specify a boolean property of the content object to use as a flag for the <code>disabled</code>attribute.</td>
+        <td>string, null</td>
+        <td><code>null</code></td>
+      </tr>
+      <tr>
+        <td><code>on-change</code></td>
+        <td>
+          Specify your own named action to trigger when the select value changes. Standard usage is: <code>(action "update")</code>. Your action handler will receive the new value, as a single value for a standard select or as an array if <code>multiple</code> is active.<br>
+          You can also force a two-way binding by using the [`mut` helper](http://emberjs.com/api/classes/Ember.Templates.helpers.html#method_mut). See <strong>two-way-bound</strong> for an example.
+        </td>
+        <td>Ember action</td>
+        <td><code>Ember.K</code> (noop)</td>
+      </tr>
+      <tr>
+        <td><code>selected</code></td>
+        <td>
+          Pass in an initial selection or update the selected value from outside the component. Must match one of the options in the content array for single select, or be an array of objects for multi-select.
+        </td>
+        <td>Object, Array</td>
+        <td><code>null</code></td>
+      </tr>
+      <tr>
+        <td><code>sortBy</code></td>
+        <td>[optional] Specify a property of the content array to use for sorting the options. When set to null, options will remain in the order of the original array.</td>
         <td>string, null</td>
         <td><code>null</code></td>
       </tr>
@@ -90,15 +119,6 @@
         <td>[optional] String or <code>null</code>. Sets the prompt text or hides the prompt option when set to <code>null</code>.</td>
         <td>string, null</td>
         <td><code>'Select an item'</code></td>
-      </tr>
-      <tr>
-        <td><code>on-change</code></td>
-        <td>
-          Specify your own named action to trigger when the select value changes. Standard usage is: <code>(action "update")</code>. Your action handler will receive the new value, as a single value for a standard select or as an array if <code>multiple</code> is active.<br>
-          You can also force a two-way binding by using the [`mut` helper](http://emberjs.com/api/classes/Ember.Templates.helpers.html#method_mut). See <strong>two-way-bound</strong> for an example.
-        </td>
-        <td>Ember action</td>
-        <td><code>Ember.K</code> (noop)</td>
       </tr>
     </tbody>
   </table>
