@@ -127,6 +127,10 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
 * `ember test`
 * `ember test --server`
 
+## Updating the GitHub pages docs site
+* `ember github-pages:commit --message "update gh-pages"`
+* `git push origin gh-pages`
+
 ## Building
 
 * `ember build`
