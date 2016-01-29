@@ -98,6 +98,16 @@ test('can specify a path for a disabled flag', function(assert) {
   assert.equal($options.filter(':disabled').length, 1);
 });
 
+test('can disable the input', function(assert) {
+  assert.expect(1);
+  this.set('content', options);
+  this.set('isDisabled', true);
+
+  this.render(hbs`{{ted-select content=content disabled=isDisabled}}`);
+
+  assert.ok(this.$('select').prop('disabled'));
+});
+
 test('can pass in an initial selection', function(assert) {
   assert.expect(1);
   this.set('content', options);
