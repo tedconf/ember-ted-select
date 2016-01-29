@@ -35,6 +35,7 @@
   {{examples/initial-selection TEDevents=TEDevents}}
   {{examples/sorting-options TEDevents=TEDevents}}
   {{examples/disabling-options TEDevents=TEDevents}}
+  {{examples/disabled-input TEDevents=TEDevents}}
   {{examples/multi-select TEDevents=TEDevents}}
   {{examples/two-way-bound TEDevents=TEDevents}}
 
@@ -103,6 +104,12 @@
           [optional] When <code>true</code>, adds the <code>multiple</code> attribute to the rendered <code>&lt;select&lt;</code>element.<br>
           When active, the <code>on-change</code> action will pass an array of objects rather than a single selected object.
         </td>
+        <td>boolean</td>
+        <td><code>false</code></td>
+      </tr>
+      <tr>
+        <td><code>disabled</code></td>
+        <td>[optional] Pass a boolean value in to disabled the entire input.</td>
         <td>boolean</td>
         <td><code>false</code></td>
       </tr>

@@ -1,7 +1,8 @@
 <select
   onchange={{action "onChange" value="target"}}
   class={{selectClassNames}}
-  multiple={{multiple}}>
+  multiple={{multiple}}
+  disabled={{disabled}}>
   {{#if prompt}}
   <option
     value=""
