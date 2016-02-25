@@ -9,20 +9,30 @@ moduleForComponent('ted-select', 'Integration | Component | ted select',{
 var options= Ember.A([{
   id: 1,
   code: 'es',
+  regionCode: 1,
   title: 'Spanish',
   nativeTitle: 'Espanol',
   isNotSpokenInCanada: true,
 }, {
   id: 2,
   code: 'fr',
+  regionCode: 1,
   title: 'French',
   nativeTitle: 'Francais',
   isNotSpokenInCanada: false,
 }, {
   id: 3,
   code: 'en',
+  regionCode: 2,
   title: 'English',
   nativeTitle: 'English',
+  isNotSpokenInCanada: false,
+}, {
+  id: 4,
+  code: 'de',
+  regionCode: 1,
+  title: 'German',
+  nativeTitle: 'Deutsch',
   isNotSpokenInCanada: false,
 }]);
 
@@ -38,7 +48,7 @@ test('it renders a select element', function(assert) {
   var $options = $component.find('option');
 
   assert.equal($component.find('select').length, 1);
-  assert.equal($options.not('.Ted-select__prompt').length, 3);
+  assert.equal($options.not('.Ted-select__prompt').length, options.length);
 
   //renders with a prompt by default
   assert.equal($component.find('.Ted-select__prompt').length, 1);
@@ -120,7 +130,7 @@ test('can pass in an initial selection', function(assert) {
 });
 
 test('can sort the options by a provided key', function(assert) {
-  assert.expect(3);
+  assert.expect(4);
   this.set('content', options);
   this.set('sortBy', 'title');
 
@@ -130,7 +140,39 @@ test('can sort the options by a provided key', function(assert) {
 
   assert.equal($options.eq(0).text().trim(), 'English');
   assert.equal($options.eq(1).text().trim(), 'French');
+  assert.equal($options.eq(2).text().trim(), 'German');
+  assert.equal($options.eq(3).text().trim(), 'Spanish');
+});
+
+
+test('can reverse sort the options by a provided key', function(assert) {
+  assert.expect(4);
+  this.set('content', options);
+  this.set('sortBy', 'title:desc');
+
+  this.render(hbs`{{ted-select content=content sortBy=sortBy}}`);
+
+  var $options = this.$('option:not(.Ted-select__prompt)');
+
+  assert.equal($options.eq(0).text().trim(), 'Spanish');
+  assert.equal($options.eq(1).text().trim(), 'German');
+  assert.equal($options.eq(2).text().trim(), 'French');
+  assert.equal($options.eq(3).text().trim(), 'English');
+});
+
+test('can sort the options by a comma separated list of keys', function(assert) {
+  assert.expect(4);
+  this.set('content', options);
+  this.set('sortBy', 'regionCode, title');
+
+  this.render(hbs`{{ted-select content=content sortBy=sortBy}}`);
+
+  var $options = this.$('option:not(.Ted-select__prompt)');
+
+  assert.equal($options.eq(0).text().trim(), 'French');
+  assert.equal($options.eq(1).text().trim(), 'German');
   assert.equal($options.eq(2).text().trim(), 'Spanish');
+  assert.equal($options.eq(3).text().trim(), 'English');
 });
 
 test('selection gets passed out with the on-change action', function(assert) {
@@ -162,7 +204,7 @@ test('multiple selection gets passed out as an array;', function(assert) {
 
   this.render(hbs`{{ted-select content=content multiple=true on-change=(action "assertChanged")}}`);
 
-  this.$('select').val([1,2]);
+  this.$('select').val([1,2,4]);
   this.$('select').trigger('change');
 
 });
