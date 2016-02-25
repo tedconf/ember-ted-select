@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
   sortArray: Ember.computed('sortBy', function(){
     if (this.get('sortBy')){
-      return [this.get('sortBy')];
+      return this.get('sortBy').replace(' ', '').split(',');
     }
     return [];
   }),
