@@ -130,7 +130,10 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
 
 ## Running Tests
 
-* `ember test`
+* `npm test` (Runs ember try:testall to test your addon against multiple Ember versions)
+
+or to run a test server while developing:
+
 * `ember test --server`
 
 ## Updating the GitHub pages docs site
