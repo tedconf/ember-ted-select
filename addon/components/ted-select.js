@@ -16,7 +16,6 @@ export default Ember.Component.extend({
   sortBy: null,
   multiple: false,
   disabled: false,
-  'on-change': Ember.K, //no-op if no action passed in
 
   sortArray: Ember.computed('sortBy', function(){
     if (this.get('sortBy')){
@@ -44,8 +43,11 @@ export default Ember.Component.extend({
           return Ember.get(option, this.get('optionValueKey')).toString() === value;
         });
       }
+      
+      if (this.attrs.onchange){
+        this.attrs.onchange(selection);
+      }
 
-      this['on-change'].call(this, selection);
     },
   }
 

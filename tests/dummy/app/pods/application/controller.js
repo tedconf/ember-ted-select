@@ -1,33 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  // updatedBySelect: null,
-  // selectedOptions: null,
-
-  // selectedOption: Ember.computed('TEDevents', function(){
-  //    return this.get('TEDevents').findBy('id', 4);
-  // }),
-
-  // initialSelection: Ember.computed('TEDevents', function() {
-  //   return this.get('TEDevents').findBy('id', 3);
-  // }),
-
-  actions: {
-    // update(newOption){
-    //   this.set('updatedBySelect', newOption);
-    // },
-    alsoUpdate(newOption){
-       this.set('alsoUpdatedBySelect', newOption);
-       this.set('selected', null);
-    },
-    // clear(){
-    //   this.set('alsoUpdatedBySelect', null);
-    // },
-    // updateMultiple(selectedOptions){
-    //   this.set('selectedOptions', selectedOptions);
-    // }
-  },
-
   TEDevents: Ember.A([
     {
      id: 1,

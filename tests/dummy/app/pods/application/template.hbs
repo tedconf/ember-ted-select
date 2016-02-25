@@ -76,9 +76,9 @@
         <td><code>null</code></td>
       </tr>
       <tr>
-        <td><code>on-change</code></td>
+        <td><code>onchange</code></td>
         <td>
-          Specify your own named action to trigger when the select value changes. Standard usage is: <code>(action "update")</code>. Your action handler will receive the new value, as a single value for a standard select or as an array if <code>multiple</code> is active.<br>
+          Specify your own closure action to trigger when the select value changes. Standard usage is: <code>(action "update")</code>. Your action handler will receive the new value, as a single value for a standard select or as an array if <code>multiple</code> is active.<br>
           You can also force a two-way binding by using the [`mut` helper](http://emberjs.com/api/classes/Ember.Templates.helpers.html#method_mut). See <strong>two-way-bound</strong> for an example.
         </td>
         <td>Ember action</td>
@@ -102,7 +102,7 @@
         <td><code>multiple</code></td>
         <td>
           [optional] When <code>true</code>, adds the <code>multiple</code> attribute to the rendered <code>&lt;select&lt;</code>element.<br>
-          When active, the <code>on-change</code> action will pass an array of objects rather than a single selected object.
+          When active, the <code>onchange</code> action will pass an array of objects rather than a single selected object.
         </td>
         <td>boolean</td>
         <td><code>false</code></td>
