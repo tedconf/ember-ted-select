@@ -225,18 +225,6 @@ test('can create a two way binding on the selection', function(assert) {
 
 });
 
-test('can force the select to reset after a change is made', function(assert) {
-  assert.expect(1);
-  this.set('content', options);
-
-  this.render(hbs`{{ted-select content=content resetOnChange=true}}`);
-
-  this.$('select').val(1);
-  this.$('select').trigger('change');
-
-  assert.equal(this.$('.Ted-select__prompt:selected').length, 1);
-});
-
 test('can add a custom class name to the select element', function(assert) {
   assert.expect(1);
 
