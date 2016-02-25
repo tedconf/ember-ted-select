@@ -16,7 +16,6 @@ export default Ember.Component.extend({
   sortBy: null,
   multiple: false,
   disabled: false,
-  resetOnChange: false,
   'on-change': Ember.K, //no-op if no action passed in
 
   sortArray: Ember.computed('sortBy', function(){
@@ -47,15 +46,7 @@ export default Ember.Component.extend({
       }
 
       this['on-change'].call(this, selection);
-
-      if (this.get('resetOnChange')){
-        this.send('resetSelection');
-      }
     },
-
-    resetSelection(){
-      this.$('select').val('');
-    }
   }
 
 });
