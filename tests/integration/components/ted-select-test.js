@@ -175,7 +175,7 @@ test('can sort the options by a comma separated list of keys', function(assert) 
   assert.equal($options.eq(3).text().trim(), 'English');
 });
 
-test('selection gets passed out with the on-change action', function(assert) {
+test('selection gets passed out with the onchange action', function(assert) {
   assert.expect(1);
   this.set('content', options);
 
@@ -185,7 +185,7 @@ test('selection gets passed out with the on-change action', function(assert) {
     assert.deepEqual(selection, itemToSelect);
   }};
 
-  this.render(hbs`{{ted-select content=content on-change=(action "assertChanged")}}`);
+  this.render(hbs`{{ted-select content=content onchange=(action "assertChanged")}}`);
 
   this.$('select').val(3);
   this.$('select').trigger('change');
@@ -202,7 +202,7 @@ test('multiple selection gets passed out as an array;', function(assert) {
 
   var itemsToSelect = options.rejectBy('code', 'en');
 
-  this.render(hbs`{{ted-select content=content multiple=true on-change=(action "assertChanged")}}`);
+  this.render(hbs`{{ted-select content=content multiple=true onchange=(action "assertChanged")}}`);
 
   this.$('select').val([1,2,4]);
   this.$('select').trigger('change');
@@ -216,25 +216,13 @@ test('can create a two way binding on the selection', function(assert) {
   this.set('selection', null);
   var itemToSelect = options.findBy('id', 2);
 
-  this.render(hbs`{{ted-select content=content on-change=(action (mut selection))}}`);
+  this.render(hbs`{{ted-select content=content onchange=(action (mut selection))}}`);
 
   this.$('select').val(2);
   this.$('select').trigger('change');
 
   assert.equal(this.get('selection'), itemToSelect);
 
-});
-
-test('can force the select to reset after a change is made', function(assert) {
-  assert.expect(1);
-  this.set('content', options);
-
-  this.render(hbs`{{ted-select content=content resetOnChange=true}}`);
-
-  this.$('select').val(1);
-  this.$('select').trigger('change');
-
-  assert.equal(this.$('.Ted-select__prompt:selected').length, 1);
 });
 
 test('can add a custom class name to the select element', function(assert) {
