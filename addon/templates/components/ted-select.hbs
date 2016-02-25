@@ -13,10 +13,10 @@
   {{/if}}
   {{#each sortedContent key="@index" as |option|}}
     <option
-      value="{{ted-select-get option optionValueKey}}"
+      value="{{get option optionValueKey}}"
       selected={{ted-select-is-equal option selected}}
-      disabled={{ted-select-get option optionDisabledKey}}>
-      {{ted-select-get option optionLabelKey}}
+      disabled={{get option optionDisabledKey}}>
+      {{get option optionLabelKey}}
     </option>
   {{/each}}
 </select>
