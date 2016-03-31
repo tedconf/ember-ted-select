@@ -48,13 +48,13 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
     </tr>
     <tr>
       <td><code>optionLabelKey</code></td>
-      <td>[optional] Specify a property of the content object to use as each option's <code>value</code> attribute.</td>
+      <td>[optional] Specify a property of the content object to use as each option's label.</td>
       <td>string</td>
       <td><code>'id'</code></td>
     </tr>
     <tr>
       <td><code>optionValueKey</code></td>
-      <td>[optional] Specify a property of the content object to use as each option's label.</td>
+      <td>[optional] Specify a property of the content object to use as each option's <code>value</code> attribute.</td>
       <td>string</td>
       <td><code>'title'</code></td>
     </tr>
@@ -90,7 +90,7 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
     <tr>
       <td><code>multiple</code></td>
       <td>
-        [optional] When <code>true</code>, adds the <code>multiple</code> attribute to the rendered <code>&lt;select&lt;</code>element.<br>
+        [optional] When <code>true</code>, adds the <code>multiple</code> attribute to the rendered <code>&lt;select&gt;</code>element.<br>
         When active, the <code>on-change</code> action will pass an array of objects rather than a single selected object.
       </td>
       <td>boolean</td>
