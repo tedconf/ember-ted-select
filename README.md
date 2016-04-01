@@ -12,7 +12,7 @@ A data down, actions up select component rendered with real DOM elements.Support
 
 You'll need to give `ted-select` an array of options (`content`), specifying a property to use for both option value and option label. A selection can be passed in (data down) using the `selected` property, and the add-on will send an `on-change` action out (actions-up)
 
-````
+```hbs
 {{ted-select
   selectClassNames="form-control"
   content=TEDevents
