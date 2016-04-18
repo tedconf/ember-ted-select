@@ -10,7 +10,7 @@ A data down, actions up select component rendered with real DOM elements.Support
 
 ### Standard Usage
 
-You'll need to give `ted-select` an array of options (`content`), specifying a property to use for both option value and option label. A selection can be passed in (data down) using the `selected` property, and the add-on will send an `on-change` action out (actions-up)
+You'll need to give `ted-select` an array of options (`content`), specifying a property to use for both option value and option label. A selection can be passed in (data down) using the `selected` property, and the add-on will send an `onchange` action out (actions-up)
 
 ```hbs
 {{ted-select
@@ -18,7 +18,7 @@ You'll need to give `ted-select` an array of options (`content`), specifying a p
   content=TEDevents
   optionValueKey="id"
   optionLabelKey="title"
-  on-change=(action "update")
+  onchange=(action "update")
   selected=initialSelection
 }}
 ````
@@ -65,7 +65,7 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
       <td><code>null</code></td>
     </tr>
     <tr>
-      <td><code>on-change</code></td>
+      <td><code>onchange</code></td>
       <td>
         Specify your own named action to trigger when the select value changes. Standard usage is: <code>(action "update")</code>. Your action handler will receive the new value, as a single value for a standard select or as an array if <code>multiple</code> is active.<br>
         You can also force a two-way binding by using the [`mut` helper](http://emberjs.com/api/classes/Ember.Templates.helpers.html#method_mut). See <strong>two-way-bound</strong> for an example.
@@ -91,7 +91,7 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
       <td><code>multiple</code></td>
       <td>
         [optional] When <code>true</code>, adds the <code>multiple</code> attribute to the rendered <code>&lt;select&gt;</code>element.<br>
-        When active, the <code>on-change</code> action will pass an array of objects rather than a single selected object.
+        When active, the <code>onchange</code> action will pass an array of objects rather than a single selected object.
       </td>
       <td>boolean</td>
       <td><code>false</code></td>
