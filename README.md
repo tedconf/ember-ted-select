@@ -42,7 +42,7 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
   <tbody>
     <tr>
       <td><code>content</code></td>
-      <td>Pass in a content array to populate the select options.</td>
+      <td>Pass in a content array to populate the select options. Pass in a content array to populate the select options. Each array element must be an object with properties for both the 'value' attribute and option label text.</td>
       <td>array</td>
       <td><code>null</code></td>
     </tr>
