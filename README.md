@@ -103,6 +103,12 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
       <td><code>false</code></td>
     </tr>
     <tr>
+      <td><code>name</code></td>
+      <td>[optional] Add a name attribute to the select element.</td>
+      <td>string, null</td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
       <td><code>selectClassNames</code></td>
       <td>Adds one or more custom class names to the select element. Pass multiple classes as a space separated list: <code>form-control My-select</code></td>
       <td>string, null</td>
