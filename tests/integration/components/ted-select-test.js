@@ -118,6 +118,16 @@ test('can disable the input', function(assert) {
   assert.ok(this.$('select').prop('disabled'));
 });
 
+test('can set a name attribute on the input', function(assert) {
+  assert.expect(1);
+  this.set('content', options);
+  this.set('name', 'awesome-ted-select');
+
+  this.render(hbs`{{ted-select content=content name=name}}`);
+
+  assert.equal(this.$('select').prop('name'), 'awesome-ted-select');
+});
+
 test('can pass in an initial selection', function(assert) {
   assert.expect(1);
   this.set('content', options);

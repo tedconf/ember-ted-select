@@ -42,7 +42,7 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
   <tbody>
     <tr>
       <td><code>content</code></td>
-      <td>Pass in a content array to populate the select options. Pass in a content array to populate the select options. Each array element must be an object with properties for both the 'value' attribute and option label text.</td>
+      <td>Pass in a content array to populate the select options. Each array element must be an object with properties for both the 'value' attribute and option label text.</td>
       <td>array</td>
       <td><code>null</code></td>
     </tr>
@@ -101,6 +101,12 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
       <td>[optional] Pass a boolean value in to disabled the entire input.</td>
       <td>boolean</td>
       <td><code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>[optional] Add a name attribute to the select element.</td>
+      <td>string, null</td>
+      <td><code>null</code></td>
     </tr>
     <tr>
       <td><code>selectClassNames</code></td>
