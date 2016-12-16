@@ -2,6 +2,8 @@
 
 A data down, actions up select component rendered with real DOM elements.Supports disabled options, multi-select, option sorting and custom prompt.
 
+> This addon is prepared for internal use at TED. We're happy to share our code as open-source, but be aware that it may not be maintianed for broader community use. 
+
 ## Installation
 
 * `ember install ember-ted-select`
@@ -125,7 +127,6 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
   </tbody>
 </table>
 
-
 ## Running a demo
 
 * `git clone` this repository
@@ -142,12 +143,30 @@ or to run a test server while developing:
 
 * `ember test --server`
 
-## Updating the GitHub pages docs site
-* `ember github-pages:commit --message "update gh-pages"`
-* `git push origin gh-pages`
-
 ## Building
 
 * `ember build`
+
+## For contributors:
+PRs that do not include the following will not be merged:
+
+* a passing test suite
+* test coverage for your new code
+* updated README docs (if applicable)
+* updated docs and/or examples in the docs site found in `tests/dummy` (if applicable)
+
+## For maintainers:
+
+### Updating the GitHub pages docs site
+* `ember github-pages:commit --message "update gh-pages"`
+* `git push origin gh-pages`
+
+### Creating a new release and publishing to npm
+
+* `npm version $TYPE -m "message about this version"` where $TYPE indicates the semver release type, eg. `patch`, `major` or `minor`. see the [npm-version docs](https://docs.npmjs.com/cli/version) and (semver docs)[http://semver.org/] if you're not sure which applies
+* `npm publish`
+* `git push --tags`
+* document the changes by [creating a new release](https://github.com/tedconf/ember-ted-select/releases)
+
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
