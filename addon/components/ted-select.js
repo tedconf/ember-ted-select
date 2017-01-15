@@ -7,6 +7,7 @@ export default Ember.Component.extend({
 
   classNames: 'Ted-select',
   selectClassNames: null,
+  selectId: null,
   content: Ember.A([]),
   optionValueKey: 'id',
   optionLabelKey: 'title',

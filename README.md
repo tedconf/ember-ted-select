@@ -2,7 +2,7 @@
 
 A data down, actions up select component rendered with real DOM elements.Supports disabled options, multi-select, option sorting and custom prompt.
 
-> This addon is prepared for internal use at TED. We're happy to share our code as open-source, but be aware that it may not be maintianed for broader community use. 
+> This addon is prepared for internal use at TED. We're happy to share our code as open-source, but be aware that it may not be maintianed for broader community use.
 
 ## Installation
 
@@ -113,6 +113,12 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
     <tr>
       <td><code>selectClassNames</code></td>
       <td>Adds one or more custom class names to the select element. Pass multiple classes as a space separated list: <code>form-control My-select</code></td>
+      <td>string, null</td>
+      <td><code>null</code></td>
+    </tr>
+    <tr>
+      <td><code>selectId</code></td>
+      <td>Sets the ID on the select element.</td>
       <td>string, null</td>
       <td><code>null</code></td>
     </tr>
