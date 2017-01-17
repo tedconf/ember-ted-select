@@ -5,6 +5,8 @@
 
   For convenience, the class name on the select element itself can be changed using the `selectClassNames` option. This is helpful for applying framework styles, like [Bootstrap's `.form-control` class](http://getbootstrap.com/css/#forms), shown here and in the following examples.
 
+  You can also customize the select element's ID using the `selectId` option.
+
   You can customize the prompt text with `prompt="your custom string"` or remove it completely with `prompt=null`.
 {{/ember-markdown-section}}
 
@@ -17,6 +19,7 @@
     {{!-- BEGIN-SNIPPET styled --}}
      {{ted-select
       selectClassNames="form-control"
+      selectId="ted-events-select"
       prompt="Choose an event"
       content=TEDevents }}
     {{!-- END-SNIPPET --}}

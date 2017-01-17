@@ -38,7 +38,7 @@ var options= Ember.A([{
 
 test('it renders a select element', function(assert) {
 
-  assert.expect(6);
+  assert.expect(7);
 
   this.set('content', options);
 
@@ -49,6 +49,9 @@ test('it renders a select element', function(assert) {
 
   assert.equal($component.find('select').length, 1);
   assert.equal($options.not('.Ted-select__prompt').length, options.length);
+
+  // renders the select with no id
+  assert.equal($component.find('select').prop('id'), '', 'select has no id');
 
   //renders with a prompt by default
   assert.equal($component.find('.Ted-select__prompt').length, 1);
@@ -233,6 +236,14 @@ test('can create a two way binding on the selection', function(assert) {
 
   assert.equal(this.get('selection'), itemToSelect);
 
+});
+
+test('can add a custom ID to the select element', function(assert) {
+  assert.expect(1);
+
+  this.render(hbs`{{ted-select content=content selectId="my-select"}}`);
+
+  assert.equal(this.$('select#my-select').length, 1);
 });
 
 test('can add a custom class name to the select element', function(assert) {
