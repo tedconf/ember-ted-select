@@ -1,11 +1,6 @@
-
-{{#ember-markdown-section}}
-  ### Basic usage
-
-  Call `ember-ted-select` in your template by providing a list of options and an action to trigger when the value of the select changes.
-
-  Remember, the selected value is not two-way bound. It's up to you to handle the new value within your action.
-{{/ember-markdown-section}}
+<h3 id="basic-usage">Basic usage</h3>
+<p>Call <code>ember-ted-select</code> in your template by providing a list of options and an action to trigger when the value of the select changes.</p>
+<p>Remember, the selected value is not two-way bound. It's up to you to handle the new value within your action.</p>
 
 <div class="row">
   <div class="col-md-6">
@@ -26,9 +21,7 @@ Selected: {{selected.title}}
 </div>
 <br>
 
-{{#ember-markdown-section}}
-By default, the add-on will look for `content.id` for the option `value` attribute, and `content.title` for the option label. You can specify alternate keys using `optionLabelKey` and `optionValueKey`.
-{{/ember-markdown-section}}
+{{markdown-to-html "By default, the add-on will look for `content.id` for the option `value` attribute, and `content.title` for the option label. You can specify alternate keys using `optionLabelKey` and `optionValueKey`." }}
 
 <div class="row">
   <div class="col-md-6">

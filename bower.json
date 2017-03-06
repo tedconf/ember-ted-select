@@ -2,6 +2,6 @@
   "name": "ember-ted-select",
   "dependencies": {
     "bootstrap-sass": "~3.3.6",
-    "marked": "~0.3.5"
+    "showdown": "^1.6.4"
   }
 }
