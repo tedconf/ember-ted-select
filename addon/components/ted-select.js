@@ -23,10 +23,13 @@ export default Ember.Component.extend({
     if (this.get('sortBy')){
       return this.get('sortBy').replace(' ', '').split(',');
     }
-    return [];
   }),
 
   sortedContent: Ember.computed.sort('content', 'sortArray'),
+
+  options: Ember.computed('sortBy', 'content.[]', function() {
+    return this.get('sortBy') ? this.get('sortedContent') : this.get('content');
+  }),
 
   actions: {
     onChange(target){

@@ -13,7 +13,7 @@
     {{prompt}}
   </option>
   {{/if}}
-  {{#each sortedContent key="@index" as |option|}}
+  {{#each options key="@index" as |option|}}
     <option
       value="{{get option optionValueKey}}"
       selected={{ted-select-is-equal option selected}}

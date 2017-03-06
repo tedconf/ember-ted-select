@@ -7,28 +7,22 @@
 
 <div class="container">
 
-  {{#ember-markdown-section}}
-  ## Installation
+  <h2 id="installation">Installation</h2>
+  <pre><code>ember install ember-ted-select</code></pre>
 
-  ```
-  ember install ember-ted-select
-  ```
-
-  ## Features
-  `ember-ted-select` is a simple select element component that can do everything a native select element can do and more:
-
-  * disabled options
-  * multi-select
-  * custom prompt
-  * option sorting
-
-  It uses the data down, actions up pattern to avoid problematic two-way data binding, and can be used as a replacement for the [deprecated `&lbrace;{view 'select'}&rbrace;` helper](http://emberjs.com/deprecations/v1.x/#toc_ember-select).
-
-
-  ## Examples
-
-
-  {{/ember-markdown-section}}
+  <h2 id="features">Features</h2>
+  <p><code>ember-ted-select</code> is a simple select element component that can do everything a native select element can do and more:</p>
+  
+  <ul>
+    <li>disabled options</li>
+    <li>multi-select</li>
+    <li>custom prompt</li>
+    <li>option sorting</li>
+  </ul>
+    
+  <p>It uses the data down, actions up pattern to avoid problematic two-way data binding, and can be used as a replacement for the <a href="http://emberjs.com/deprecations/v1.x/#toc_ember-select">deprecated <code> &#123;&#123;view 'select'&#125;&#125;</code> helper</a>.</p>
+  
+  <h2 id="examples">Examples</h2>
 
   {{examples/basic-usage TEDevents=TEDevents}}
   {{examples/adding-styles TEDevents=TEDevents}}
