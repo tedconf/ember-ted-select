@@ -135,15 +135,15 @@ Visit the [docs site](http://tedconf.github.io/ember-ted-select/) for demos and 
 
 ## Running a demo
 
-* `git clone` this repository
+* `git clone <repository-url>` this repository
 * `npm install`
 * `bower install`
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `ember serve`
+* Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ## Running Tests
 
-* `npm test` (Runs ember try:testall to test your addon against multiple Ember versions)
+* `npm test` (Runs ember try:each to test your addon against multiple Ember versions)
 
 or to run a test server while developing:
 
@@ -175,4 +175,4 @@ PRs that do not include the following will not be merged:
 * document the changes by [creating a new release](https://github.com/tedconf/ember-ted-select/releases)
 
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+For more information on using ember-cli, visit [https://www.ember-cli.com/](https://www.ember-cli.com/).
