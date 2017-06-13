@@ -1,6 +1,6 @@
 {
   "name": "ember-ted-select",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Data down, actions up, Ember select component built with real DOM",
   "keywords": [
     "ember-addon",
